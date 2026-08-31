@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover your next board game at Poly Board Games Cafe.">
+  <title>Poly — Board Games Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Poly home">
+      <span class="brand-letter brand-p">P</span><span class="brand-die" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-letter brand-l">L</span><span class="brand-letter brand-y">Y</span>
+      <small>board games cafe</small>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#games">Games</a>
+      <a class="nav-cta" href="#games">Find your game <span>↘</span></a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="about">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> A table for every mood</span>
+        <h1>Good games.<br><em>Better company.</em></h1>
+        <p class="hero-lead">Poly is a board game café built for curious first-timers, seasoned strategists, and everyone in between. Pick a mood, pull up a chair, and let the good times roll.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#games">Explore the collection <span>↓</span></a>
+          <div class="mini-note"><strong>Not sure what to play?</strong><br>That’s what our Game Masters are for.</div>
+        </div>
+      </div>
+
+      <div class="hero-board" aria-label="A playful board game table illustration">
+        <div class="sunburst"></div>
+        <div class="floating-card card-one"><span>?</span></div>
+        <div class="floating-card card-two"><span>★</span></div>
+        <div class="pawn pawn-red"></div>
+        <div class="pawn pawn-green"></div>
+        <div class="dice dice-main"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="board-message">YOUR NEXT<br><strong>FAVORITE GAME</strong><br>IS ON THE TABLE</div>
+        <span class="scribble scribble-one">⌁</span>
+        <span class="scribble scribble-two">✦</span>
+      </div>
+    </section>
+
+    <section class="game-master-strip" aria-label="Game master service">
+      <div class="gm-icon" aria-hidden="true">☻</div>
+      <p><span>Tell us your mood.</span> Our Game Master will recommend the right game and guide you through it—no rulebook headache required.</p>
+      <span class="strip-doodle">→</span>
+    </section>
+
+    <section class="games-section" id="games">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow"><i></i> The game shelf</span>
+          <h2>What are we<br>playing today?</h2>
+        </div>
+        <p>From quick party starters to big-brain strategy. Search the shelf or filter by the kind of session you’re planning.</p>
+      </div>
+
+      <div class="game-controls" aria-label="Filter games">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <input id="game-search" type="search" placeholder="Search a game or category…" autocomplete="off">
+        </label>
+        <div class="filter-group" id="difficulty-filters" aria-label="Difficulty">
+          <button class="filter active" data-filter="all">All levels</button>
+          <button class="filter" data-filter="E"><i class="easy"></i> Easy</button>
+          <button class="filter" data-filter="M"><i class="medium"></i> Medium</button>
+          <button class="filter" data-filter="H"><i class="hard"></i> Hard</button>
+        </div>
+        <label class="player-filter">
+          <span>Players</span>
+          <select id="player-count">
+            <option value="all">Any group</option>
+            <option value="1">Solo</option>
+            <option value="2">2 players</option>
+            <option value="4">4 players</option>
+            <option value="6">6+ players</option>
+            <option value="10">10+ players</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="results-line">
+        <p><strong id="result-count">0</strong> games waiting on the shelf</p>
+        <div class="legend"><span><i class="easy"></i> Easy</span><span><i class="medium"></i> Medium</span><span><i class="hard"></i> Hard</span></div>
+      </div>
+
+      <div class="game-grid" id="game-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span>?</span>
+        <h3>No match on this shelf.</h3>
+        <p>Try another title, category, or group size.</p>
+      </div>
+      <button class="button show-more" id="show-more" type="button">Show more games <span>+</span></button>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="#top">
+      <span class="brand-letter brand-p">P</span><span class="brand-die" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-letter brand-l">L</span><span class="brand-letter brand-y">Y</span>
+      <small>board games cafe</small>
+    </a>
+    <p>Find your people. Pick your game. Play awhile.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

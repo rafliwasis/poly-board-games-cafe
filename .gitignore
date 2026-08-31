@@ -1,0 +1,10 @@
+# Local development and source references
+references/
+preview-*.png
+qa_preview.py
+capture_canva.py
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
