@@ -10,7 +10,6 @@
     { category: 'Snacks', name: 'Cireng', price: '28K' },
     { category: 'Snacks', name: 'Otak-Otak Singapore', price: '28K' },
     { category: 'Snacks', name: 'Pisang Goreng', price: '22K' },
-    { category: 'Snacks', name: 'Keju Aroma', price: '22K' },
 
     // Main Courses & Ricebowls
     { category: 'Main Courses & Ricebowls', name: 'Chicken Katsu', price: '38K' },
