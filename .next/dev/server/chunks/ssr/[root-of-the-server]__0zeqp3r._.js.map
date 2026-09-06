@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["file:///Users/rafliwasis/Documents/project_ext/poly-board-games-cafe/pages/about.js"],"sourcesContent":["import { useEffect } from 'react'\n\nexport default function About() {\n  useEffect(() => {\n    window.location.replace('/about.html')\n  }, [])\n  return null\n}"],"names":["About","window","location","replace"],"mappings":";;;;AAAA;;AAEe,SAASA;IACtB,IAAA,gHAAS,EAAC;QACRC,OAAOC,QAAQ,CAACC,OAAO,CAAC;IAC1B,GAAG,EAAE;IACL,OAAO;AACT"}}]
+}
