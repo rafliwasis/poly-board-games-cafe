@@ -9,3 +9,4 @@ capture_canva.py
 Thumbs.db
 .vscode/
 node_modules/
+.next/
