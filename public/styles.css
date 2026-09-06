@@ -108,6 +108,9 @@ h2 { font-size: clamp(54px, 6vw, 78px); margin-bottom: 0; }
 .card-art { height: 128px; position: relative; overflow: hidden; background: var(--card-accent); border-bottom: 2px solid var(--ink); display: grid; place-items: center; }
 .card-art::before { content: ""; position: absolute; inset: -40%; background: repeating-conic-gradient(rgba(255,255,255,.15) 0 10deg, transparent 10deg 22deg); }
 .card-art::after { content: attr(data-mark); position: relative; z-index: 1; color: white; font: 700 62px "Fredoka"; -webkit-text-stroke: 2px var(--ink); text-shadow: 4px 4px 0 rgba(23,32,43,.35); transform: rotate(-5deg); }
+.card-art.has-cover::before, .card-art.has-cover::after { display: none; }
+.card-art.has-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.card-art.editorial-cover img { object-position: 50% 45%; }
 .game-number { position: absolute; left: 12px; top: 10px; z-index: 2; color: white; font: 700 10px "DM Sans"; letter-spacing: 1px; }
 .difficulty-badge { position: absolute; z-index: 2; right: 11px; top: 10px; width: 30px; height: 30px; display: grid; place-items: center; color: white; border: 2px solid white; box-shadow: 2px 2px 0 var(--ink); border-radius: 50%; font: 700 13px "Fredoka"; }
 .difficulty-badge.E { background: #20c84b; }.difficulty-badge.M { background: #e9bf00; }.difficulty-badge.H { background: #f43b36; }
@@ -117,6 +120,9 @@ h2 { font-size: clamp(54px, 6vw, 78px); margin-bottom: 0; }
 .card-meta { margin-top: auto; padding-top: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--line); }
 .players { font-weight: 700; font-size: 12px; }.players span { color: var(--blue); font-size: 17px; margin-right: 3px; }
 .mood-tag { background: #f0ece2; border-radius: 999px; padding: 5px 8px; font-size: 10px; font-weight: 700; }
+.card-guide { width: 100%; margin-top: 12px; padding: 10px 12px; border: 1px solid var(--ink); border-radius: 10px; background: var(--ink); color: white; cursor: pointer; font-size: 12px; font-weight: 700; text-align: left; }
+.card-guide span { float: right; color: var(--yellow); }
+.card-guide:hover, .card-guide:focus-visible { background: var(--blue); }
 .show-more { display: block; margin: 34px auto 0; background: var(--ink); color: white; box-shadow: 3px 4px 0 var(--yellow); }
 .show-more span { color: var(--yellow); margin-left: 8px; }
 .show-more[hidden] { display: none; }
@@ -128,11 +134,54 @@ footer { min-height: 160px; padding: 35px max(20px, calc((100% - 1180px) / 2)); 
 .footer-brand small { color: white; }.footer-brand .brand-letter { text-shadow: none; }.footer-brand .brand-die { box-shadow: none; }
 footer p { color: #aeb5bd; } footer > a:last-child { color: var(--yellow); font-weight: 700; }
 
+.game-dialog { width: min(980px, calc(100% - 32px)); max-height: min(800px, calc(100dvh - 32px)); padding: 0; border: 3px solid var(--ink); border-radius: 24px; background: var(--paper); color: var(--ink); box-shadow: 10px 12px 0 var(--yellow); overflow: auto; }
+.game-dialog::backdrop { background: rgba(11, 25, 40, .72); backdrop-filter: blur(5px); }
+.dialog-close { position: absolute; z-index: 4; top: 14px; right: 14px; width: 42px; height: 42px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); color: var(--ink); cursor: pointer; font-size: 27px; line-height: 1; box-shadow: 2px 3px 0 var(--ink); }
+.dialog-close:hover { background: var(--yellow); }
+.dialog-layout { display: grid; grid-template-columns: minmax(300px, .85fr) 1.15fr; min-height: 610px; }
+.dialog-visual { position: relative; display: flex; flex-direction: column; justify-content: center; padding: 58px 34px 26px; background: #eee8db; border-right: 2px solid var(--ink); overflow: hidden; }
+.dialog-visual::before { content: ""; position: absolute; inset: -25%; background: repeating-conic-gradient(rgba(23,105,194,.08) 0 11deg, transparent 11deg 24deg); }
+.dialog-visual img { position: relative; z-index: 1; width: 100%; max-height: 430px; object-fit: contain; filter: drop-shadow(8px 10px 0 rgba(23,32,43,.16)); }
+.dialog-visual p { position: relative; z-index: 1; margin: 25px 0 0; color: #686d73; font-size: 11px; text-align: center; }
+.dialog-visual a { color: var(--blue); font-weight: 700; text-decoration: underline; }
+.game-dialog.has-editorial-art .dialog-visual { padding: 0; background: var(--ink); }
+.game-dialog.has-editorial-art .dialog-visual::before { display: none; }
+.game-dialog.has-editorial-art .dialog-visual img { width: 100%; height: 100%; max-height: none; object-fit: cover; }
+.game-dialog.has-editorial-art .dialog-visual p { position: absolute; z-index: 2; right: 12px; bottom: 12px; margin: 0; padding: 6px 9px; border-radius: 999px; background: rgba(255,253,247,.9); color: #555; backdrop-filter: blur(5px); }
+.dialog-content { padding: 58px 48px 42px; }
+.dialog-content h2 { margin: 14px 0 8px; font-size: clamp(42px, 5vw, 66px); line-height: 1; }
+.dialog-tagline { margin: 0 0 24px; color: var(--blue); font: 600 17px/1.45 "Fredoka"; }
+.dialog-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); margin-bottom: 24px; }
+.dialog-facts span { padding: 13px 12px; border-right: 1px solid var(--line); }
+.dialog-facts span:first-child { padding-left: 0; }
+.dialog-facts span:last-child { border: 0; }
+.dialog-facts small, .dialog-facts strong { display: block; }
+.dialog-facts small { color: #73787e; font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+.dialog-facts strong { margin-top: 3px; font: 700 15px "Fredoka"; }
+.dialog-overview { color: #50565e; font-size: 14px; line-height: 1.65; }
+.dialog-content h3 { margin: 24px 0 10px; font: 700 18px "Fredoka"; }
+.dialog-content ol { margin: 0; padding-left: 22px; color: #50565e; font-size: 13px; line-height: 1.55; }
+.dialog-content li { padding: 3px 0 3px 6px; }
+.dialog-content li::marker { color: var(--red); font-weight: 700; }
+.game-master-tip { display: grid; gap: 4px; margin-top: 22px; padding: 14px 16px; border: 2px solid var(--ink); border-radius: 12px; background: var(--yellow); box-shadow: 3px 4px 0 var(--ink); font-size: 12px; line-height: 1.5; transform: rotate(-.4deg); }
+.game-master-tip strong { font: 700 15px "Fredoka"; }
+body:has(.game-dialog[open]) { overflow: hidden; }
+
 @media (max-width: 980px) {
   .hero { grid-template-columns: 1fr; }.hero-copy { max-width: 750px; }.hero-board { height: 500px; }.game-grid { grid-template-columns: repeat(3, 1fr); }.game-controls { grid-template-columns: 1fr; }.filter-group { flex-wrap: wrap; }.filter { height: 40px; }.player-filter { border-left: 0; border-top: 1px solid var(--line); padding: 12px 0 2px; }.section-heading { grid-template-columns: 1fr; }
 }
 @media (max-width: 680px) {
   .site-header { height: 72px; width: min(100% - 24px, 1180px); } nav > a:not(.nav-cta) { display: none; }.nav-cta { padding: 10px 13px; }.hero { width: min(100% - 24px, 1180px); margin-top: 40px; gap: 38px; }.hero-actions { align-items: flex-start; flex-direction: column; }.hero-board { height: 430px; }.board-message strong { font-size: 37px; }.floating-card { transform: scale(.75) rotate(-14deg); }.card-two { transform: scale(.75) rotate(15deg); }.dice-main { transform: scale(.8) rotate(13deg); right: 38px; }.game-master-strip { align-items: flex-start; }.strip-doodle { display: none; }.games-section { width: min(100% - 24px, 1180px); padding-top: 70px; }.game-grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }.game-card { min-height: 260px; }.card-art { height: 105px; }.card-copy { padding: 14px 12px 12px; }.card-copy h3 { font-size: 17px; }.legend { display: none; } footer { flex-direction: column; text-align: center; }
+}
+@media (max-width: 760px) {
+  .game-dialog { max-height: calc(100dvh - 20px); }
+  .dialog-layout { grid-template-columns: 1fr; }
+  .dialog-visual { min-height: 310px; padding: 50px 55px 22px; border-right: 0; border-bottom: 2px solid var(--ink); }
+  .dialog-visual img { max-height: 260px; }
+  .game-dialog.has-editorial-art .dialog-visual { height: 360px; min-height: 360px; }
+  .game-dialog.has-editorial-art .dialog-visual img { max-height: none; object-position: center 36%; }
+  .dialog-content { padding: 36px 24px 32px; }
+  .dialog-content h2 { font-size: 43px; }
 }
 @media (max-width: 430px) { .game-grid { grid-template-columns: 1fr; }.game-card { min-height: 280px; }.card-art { height: 130px; }.hero-board { height: 390px; }.pawn-green { display: none; } }
 

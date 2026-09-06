@@ -103,6 +103,30 @@
     </section>
   </main>
 
+  <dialog class="game-dialog" id="game-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Close game guide">&times;</button>
+    <div class="dialog-layout">
+      <div class="dialog-visual">
+        <img id="dialog-image" src="" alt="">
+        <p>Image from <a id="dialog-source" href="#" target="_blank" rel="noreferrer">official publisher</a></p>
+      </div>
+      <div class="dialog-content">
+        <span class="eyebrow"><i></i> Quick game guide</span>
+        <h2 id="dialog-title"></h2>
+        <p class="dialog-tagline" id="dialog-tagline"></p>
+        <div class="dialog-facts" aria-label="Game facts">
+          <span><small>Players</small><strong id="dialog-players"></strong></span>
+          <span><small>Time</small><strong id="dialog-duration"></strong></span>
+          <span><small>Level</small><strong id="dialog-level"></strong></span>
+        </div>
+        <p class="dialog-overview" id="dialog-overview"></p>
+        <h3>How a turn works</h3>
+        <ol id="dialog-steps"></ol>
+        <aside class="game-master-tip"><strong>Game Master tip</strong><span id="dialog-tip"></span></aside>
+      </div>
+    </div>
+  </dialog>
+
   <footer>
     <a class="brand footer-brand" href="#top">
       <span class="brand-letter brand-p">P</span><span class="brand-die" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-letter brand-l">L</span><span class="brand-letter brand-y">Y</span>
@@ -112,6 +136,7 @@
     <a href="#top">Back to top ↑</a>
   </footer>
 
+  <script src="/game-details.js"></script>
   <script src="/app.js"></script>
 </body>
 </html>
