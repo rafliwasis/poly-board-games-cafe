@@ -9,20 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
+  <script src="/site-header.js" defer></script>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="/index.html#top" aria-label="Poly home">
-      <span class="brand-letter brand-p">P</span><span class="brand-die" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-letter brand-l">L</span><span class="brand-letter brand-y">Y</span>
-      <small>board games cafe</small>
-    </a>
-    <nav aria-label="Primary navigation">
-      <a href="/index.html#about">About</a>
-      <a href="/menu">Menu</a>
-      <a href="/index.html#games">Games</a>
-      <a class="nav-cta" href="/reservation" aria-current="page">Book a table <span>&rarr;</span></a>
-    </nav>
-  </header>
+  <poly-site-header></poly-site-header>
 
   <main>
     <section class="booking-hero">
@@ -163,12 +153,12 @@
   </main>
 
   <footer>
-    <a class="brand footer-brand" href="/index.html#top">
+    <a class="brand footer-brand" href="/">
       <span class="brand-letter brand-p">P</span><span class="brand-die" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-letter brand-l">L</span><span class="brand-letter brand-y">Y</span>
       <small>board games cafe</small>
     </a>
     <p>Find your people. Pick your game. Play awhile.</p>
-    <a href="/index.html#top">Back home &uarr;</a>
+    <a href="/">Back home &uarr;</a>
   </footer>
 
   <script src="/reservation.js"></script>

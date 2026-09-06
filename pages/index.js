@@ -1,9 +1,5 @@
-import { useEffect } from 'react'
+import StaticPageRedirect from '../components/StaticPageRedirect'
 
 export default function Home() {
-  useEffect(() => {
-    // Redirect to the static index.html served from /public
-    window.location.replace('/index.html')
-  }, [])
-  return null
+  return <StaticPageRedirect destination="/index.html" label="the home page" />
 }

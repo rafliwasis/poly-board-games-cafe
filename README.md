@@ -23,13 +23,28 @@ npm run dev
 
 Then visit <http://localhost:3000>.
 
-The current Next.js pages wrap the existing static experience in `public/`. The original root-level files are retained as the editable mockup source while the component migration is in progress.
+The current Next.js Pages Router provides clean public routes and hands off to the canonical mockup files in `public/`. Root-level duplicates have been removed, so edits now have one source of truth.
+
+## Project structure
+
+```text
+components/                Shared Next.js transition components
+pages/                     Clean routes: /, /about, /menu, /reservation
+public/                    Canonical browser-ready mockup
+  images/games/            Board-game artwork and source notes
+  site-header.js           Shared navigation for every mockup page
+  index.html + app.js      Home and game catalog
+  menu.html + menu.js      Food and drink menu
+  about.html               Cafe information and FAQ
+  reservation.html + .js  Table-booking mockup
+  styles.css               Shared visual system
+```
 
 ## Next.js + TypeScript handoff
 
 The game-guide mockup is separated to keep the migration mechanical:
 
-- Keep the browser-ready artwork in `public/images/games/`; the matching root-level assets are retained for the static mockup.
+- Keep browser-ready artwork in `public/images/games/`; this is the only asset source.
 - Rename `game-details.js` to `data/game-details.ts`, export `gameDetails`, and use the documented `GameDetail` shape as a TypeScript interface. The image object supports separate `cardSrc` and `modalSrc` artwork with `src` as the legacy fallback.
 - Port `gameCard()` and the `#game-dialog` markup into `GameCard` and `GameModal` components.
 - Port `reservation.js` into typed `ReservationForm`, `TimePicker`, and `TableMap` components; replace the mock occupancy map with an availability API response.

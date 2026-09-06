@@ -1,9 +1,5 @@
-import { useEffect } from 'react'
+import StaticPageRedirect from '../components/StaticPageRedirect'
 
 export default function Reservation() {
-  useEffect(() => {
-    window.location.replace('/reservation.html')
-  }, [])
-
-  return null
+  return <StaticPageRedirect destination="/reservation.html" label="table booking" />
 }

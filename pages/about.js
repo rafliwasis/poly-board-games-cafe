@@ -1,8 +1,5 @@
-import { useEffect } from 'react'
+import StaticPageRedirect from '../components/StaticPageRedirect'
 
 export default function About() {
-  useEffect(() => {
-    window.location.replace('/about.html')
-  }, [])
-  return null
+  return <StaticPageRedirect destination="/about.html" label="About Poly" />
 }
