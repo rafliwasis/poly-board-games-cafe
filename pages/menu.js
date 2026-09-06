@@ -1,5 +1,5 @@
 import StaticPageRedirect from '../components/StaticPageRedirect'
 
 export default function Menu() {
-  return <StaticPageRedirect destination="/menu.html" label="the menu" />
+  return <StaticPageRedirect destination="/menu-static.html" label="the menu" />
 }

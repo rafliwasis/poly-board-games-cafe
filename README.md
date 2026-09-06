@@ -33,10 +33,10 @@ pages/                     Clean routes: /, /about, /menu, /reservation
 public/                    Canonical browser-ready mockup
   images/games/            Board-game artwork and source notes
   site-header.js           Shared navigation for every mockup page
-  index.html + app.js      Home and game catalog
-  menu.html + menu.js      Food and drink menu
-  about.html               Cafe information and FAQ
-  reservation.html + .js  Table-booking mockup
+  home-static.html + app.js        Home and game catalog
+  menu-static.html + menu.js       Food and drink menu
+  about-static.html                Cafe information and FAQ
+  reservation-static.html + .js   Table-booking mockup
   styles.css               Shared visual system
 ```
 

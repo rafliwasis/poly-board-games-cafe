@@ -3,10 +3,10 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: '/', destination: '/index.html' },
-        { source: '/about', destination: '/about.html' },
-        { source: '/menu', destination: '/menu.html' },
-        { source: '/reservation', destination: '/reservation.html' }
+        { source: '/', destination: '/home-static.html' },
+        { source: '/about', destination: '/about-static.html' },
+        { source: '/menu', destination: '/menu-static.html' },
+        { source: '/reservation', destination: '/reservation-static.html' }
       ],
       afterFiles: [],
       fallback: []
