@@ -8,6 +8,8 @@ A responsive website concept for Poly Board Games Cafe, built from the supplied 
 - Searchable catalog of 102 board games
 - Difficulty and player-count filters
 - Progressive game-card loading
+- Interactive reservation preview with time and table selection
+- Pre-filled WhatsApp booking handoff (pending Poly's confirmed number)
 - Responsive desktop and mobile layouts
 
 ## Run locally
@@ -30,5 +32,6 @@ The game-guide mockup is separated to keep the migration mechanical:
 - Keep the browser-ready artwork in `public/images/games/`; the matching root-level assets are retained for the static mockup.
 - Rename `game-details.js` to `data/game-details.ts`, export `gameDetails`, and use the documented `GameDetail` shape as a TypeScript interface. The image object supports separate `cardSrc` and `modalSrc` artwork with `src` as the legacy fallback.
 - Port `gameCard()` and the `#game-dialog` markup into `GameCard` and `GameModal` components.
+- Port `reservation.js` into typed `ReservationForm`, `TimePicker`, and `TableMap` components; replace the mock occupancy map with an availability API response.
 - Make the catalog/modal wrapper a Client Component because opening the modal and applying filters are interactive.
 - Keep `gameDetails` server-safe: it contains data only and does not access browser APIs.
