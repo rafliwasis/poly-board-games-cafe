@@ -21,6 +21,9 @@ const difficultyFilters = document.querySelector("#difficulty-filters");
 const countLabel = document.querySelector("#result-count");
 const showMore = document.querySelector("#show-more");
 const emptyState = document.querySelector("#empty-state");
+const detailCatalog = window.POLY_GAME_DETAILS || {};
+const dialog = document.querySelector("#game-dialog");
+const dialogClose = document.querySelector("#dialog-close");
 
 let difficulty = "all";
 let visibleCount = 16;
@@ -60,13 +63,15 @@ function filteredGames() {
 }
 
 function gameCard(game, position) {
+  const detail = detailCatalog[game.name];
   const article = document.createElement("article");
-  article.className = "game-card";
+  article.className = `game-card${detail ? " has-details" : ""}`;
   article.style.setProperty("--card-accent", accents[(game.index - 1) % accents.length]);
   article.style.animationDelay = `${Math.min(position * 25, 250)}ms`;
   const mark = game.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 2).toUpperCase();
   article.innerHTML = `
-    <div class="card-art" data-mark="${mark}">
+    <div class="card-art${detail ? " has-cover" : ""}${detail?.image.cardSrc ? " editorial-cover" : ""}" data-mark="${mark}">
+      ${detail ? `<img src="${detail.image.cardSrc || detail.image.src}" alt="" loading="lazy">` : ""}
       <span class="game-number">GAME ${String(game.index).padStart(2, "0")}</span>
       <span class="difficulty-badge ${game.difficulty}" title="${game.difficulty === "E" ? "Easy" : game.difficulty === "M" ? "Medium" : "Hard"}">${game.difficulty}</span>
     </div>
@@ -77,8 +82,39 @@ function gameCard(game, position) {
         <span class="players"><span>●●</span> ${game.players} players</span>
         <span class="mood-tag">${moodFor(game.categories)}</span>
       </div>
+      ${detail ? `<button class="card-guide" type="button" data-game="${game.name}">View game guide <span>↗</span></button>` : ""}
     </div>`;
   return article;
+}
+
+function difficultyLabel(value) {
+  return value === "E" ? "Easy" : value === "M" ? "Medium" : "Hard";
+}
+
+function openGameDialog(gameName) {
+  const detail = detailCatalog[gameName];
+  const game = games.find(item => item.name === gameName);
+  if (!detail || !game) return;
+
+  const editorialArtwork = Boolean(detail.image.modalSrc);
+  dialog.classList.toggle("has-editorial-art", editorialArtwork);
+  document.querySelector("#dialog-image").src = detail.image.modalSrc || detail.image.src;
+  document.querySelector("#dialog-image").alt = detail.image.alt;
+  document.querySelector("#dialog-source").textContent = detail.source.label;
+  document.querySelector("#dialog-source").href = detail.source.url;
+  document.querySelector("#dialog-title").textContent = game.name;
+  document.querySelector("#dialog-tagline").textContent = detail.tagline;
+  document.querySelector("#dialog-players").textContent = game.players;
+  document.querySelector("#dialog-duration").textContent = detail.duration;
+  document.querySelector("#dialog-level").textContent = difficultyLabel(game.difficulty);
+  document.querySelector("#dialog-overview").textContent = detail.overview;
+  document.querySelector("#dialog-steps").replaceChildren(...detail.steps.map(step => {
+    const item = document.createElement("li");
+    item.textContent = step;
+    return item;
+  }));
+  document.querySelector("#dialog-tip").textContent = detail.tip;
+  dialog.showModal();
 }
 
 function render(reset = false) {
@@ -101,6 +137,15 @@ difficultyFilters.addEventListener("click", event => {
 search.addEventListener("input", () => render(true));
 playerSelect.addEventListener("change", () => render(true));
 showMore.addEventListener("click", () => { visibleCount += 16; render(); });
+grid.addEventListener("click", event => {
+  const button = event.target.closest("button[data-game]");
+  if (button) openGameDialog(button.dataset.game);
+});
+dialogClose.addEventListener("click", () => dialog.close());
+dialog.addEventListener("click", event => {
+  const bounds = dialog.getBoundingClientRect();
+  const outside = event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+  if (outside) dialog.close();
+});
 
 render();
-

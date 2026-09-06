@@ -12,10 +12,23 @@ A responsive website concept for Poly Board Games Cafe, built from the supplied 
 
 ## Run locally
 
-No build step or dependencies are required. Open `index.html` directly, or serve the folder locally:
+Install dependencies and start the Next.js development server:
 
 ```powershell
-python -m http.server 4173 --bind 127.0.0.1
+npm ci
+npm run dev
 ```
 
-Then visit <http://127.0.0.1:4173>.
+Then visit <http://localhost:3000>.
+
+The current Next.js pages wrap the existing static experience in `public/`. The original root-level files are retained as the editable mockup source while the component migration is in progress.
+
+## Next.js + TypeScript handoff
+
+The game-guide mockup is separated to keep the migration mechanical:
+
+- Keep the browser-ready artwork in `public/images/games/`; the matching root-level assets are retained for the static mockup.
+- Rename `game-details.js` to `data/game-details.ts`, export `gameDetails`, and use the documented `GameDetail` shape as a TypeScript interface. The image object supports separate `cardSrc` and `modalSrc` artwork with `src` as the legacy fallback.
+- Port `gameCard()` and the `#game-dialog` markup into `GameCard` and `GameModal` components.
+- Make the catalog/modal wrapper a Client Component because opening the modal and applying filters are interactive.
+- Keep `gameDetails` server-safe: it contains data only and does not access browser APIs.

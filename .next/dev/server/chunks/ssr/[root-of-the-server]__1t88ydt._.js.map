@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["file:///Users/apple/poly-board-games-cafe/pages/index.js"],"sourcesContent":["import { useEffect } from 'react'\n\nexport default function Home() {\n  useEffect(() => {\n    // Redirect to the static index.html served from /public\n    window.location.replace('/index.html')\n  }, [])\n  return null\n}\n"],"names":["Home","window","location","replace"],"mappings":";;;;AAAA;;AAEe,SAASA;IACtB,IAAA,gHAAS,EAAC;QACR,wDAAwD;QACxDC,OAAOC,QAAQ,CAACC,OAAO,CAAC;IAC1B,GAAG,EAAE;IACL,OAAO;AACT"}}]
-}
