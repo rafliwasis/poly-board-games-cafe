@@ -137,3 +137,30 @@ footer p { color: #aeb5bd; } footer > a:last-child { color: var(--yellow); font-
 @media (max-width: 430px) { .game-grid { grid-template-columns: 1fr; }.game-card { min-height: 280px; }.card-art { height: 130px; }.hero-board { height: 390px; }.pawn-green { display: none; } }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Menu section */
+.menu-section { width: min(1180px, calc(100% - 40px)); margin: 60px auto; padding: 46px; background: var(--paper); border: 2px solid var(--ink); border-radius: 18px; box-shadow: 4px 5px 0 rgba(23,32,43,.05); }
+.menu-controls { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 28px; }
+.menu-tabs { display: inline-flex; gap: 10px; }
+.tab-button { border: 0; background: transparent; padding: 10px 14px; border-radius: 12px; font-weight: 700; cursor: pointer; color: #5d6269; }
+.tab-button.active { background: var(--ink); color: white; box-shadow: 3px 4px 0 var(--yellow); }
+.menu-body { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.menu-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.menu-item { background: white; border: 2px solid var(--line); border-radius: 12px; padding: 14px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.menu-item h4 { margin: 0; font: 700 15px "Fredoka"; }
+.menu-item p { margin: 0; color: #6a6e73; font-size: 13px; }
+.menu-price { font-weight: 800; color: var(--ink); font-size: 16px; }
+.promo-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.promo-card { background: linear-gradient(180deg, #fff, #fffaf0); border: 2px solid var(--ink); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.promo-card h4 { margin: 0; font: 700 18px "Fredoka"; }
+.promo-card .promo-desc { color: #60656d; font-size: 14px; margin: 0; }
+.promo-card .promo-games { margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.promo-chip { background: #f0ece2; border-radius: 999px; padding: 6px 8px; font-size: 12px; font-weight: 700; }
+
+@media (max-width: 980px) {
+  .menu-list { grid-template-columns: repeat(2, 1fr); }
+  .promo-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 430px) {
+  .menu-list { grid-template-columns: 1fr; }
+}

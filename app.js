@@ -103,3 +103,4 @@ playerSelect.addEventListener("change", () => render(true));
 showMore.addEventListener("click", () => { visibleCount += 16; render(); });
 
 render();
+
