@@ -46,6 +46,18 @@
       <span class="strip-doodle">→</span>
     </section>
 
+    <section class="gm-widget" aria-label="Ask the Game Master AI">
+      <form class="gm-form" id="gm-form">
+        <label class="search-box gm-input">
+          <span aria-hidden="true">☻</span>
+          <input id="gm-query" type="text" placeholder="Tanyakan game yang kamu mau ke kami, misalnya “rame-rame 6 orang, suka bohongan” atau “cara main Azul?”" autocomplete="off" required maxlength="300">
+        </label>
+        <button class="button button-primary" id="gm-submit" type="submit">Tanya Game Master <span>→</span></button>
+      </form>
+
+      <div class="gm-result" id="gm-result" hidden aria-live="polite"></div>
+    </section>
+
     <section class="games-section" id="games">
       <div class="section-heading">
         <div>
@@ -135,5 +147,6 @@
 
   <script src="/game-details.js"></script>
   <script src="/app.js"></script>
+  <script src="/game-master.js"></script>
 </body>
 </html>
